@@ -1,1024 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Shree Suryodaya Public Secondary School</title>
-    <link rel="icon" href="school_logo.png" type="image/png">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="nepali-date-picker.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="nepali-date-picker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <style>
-        /* Your CSS styles remain the same as before */
-        body {
-            font-family: "Times New Roman", Times, serif;
-            color: black;
-            background: url('https://images.pexels.com/photos/1148399/pexels-photo-1148399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-        }
-        .container-page {
-            background-color: rgba(255, 255, 255, 0.95); /* Slightly less transparent */
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px auto;
-            max-width: 1200px;
-            width: 90%;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Added subtle shadow */
-        }
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 20px;
-            background-color: #e0e0e0; /* Light grey background for hero */
-            border-radius: 8px;
-        }
-        .hero h1 {
-            color: #0056b3; /* Darker blue for main heading */
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 1.1em;
-            color: #555;
-        }
-        .founder-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        }
-        .founder-img-container {
-            text-align: center;
-            margin: 15px; /* Increased margin for better spacing */
-        }
-        .founder-img {
-            border-radius: 10px;
-            max-width: 200px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease; /* Smooth hover effect */
-        }
-        .founder-img:hover {
-            transform: scale(1.05);
-        }
-        .info-section {
-            margin-bottom: 30px;
-            text-align: left;
-            padding: 20px; /* Increased padding */
-            border: 1px solid #ddd; /* Lighter border */
-            border-radius: 8px; /* Slightly more rounded corners */
-            background-color: #fff;
-        }
-        .info-section h2, .info-section h3, .info-section h4 {
-            color: #007bff;
-            margin-top: 15px;
-            margin-bottom: 15px; /* Added bottom margin */
-        }
-        .info-section ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            padding-left: 0;
-        }
-        .info-section li {
-            margin-bottom: 5px;
-        }
-        #admission-page {
-            display: none;
-            padding: 30px; /* Increased padding */
-            border-radius: 10px;
-            background-color: #f8f9fa;
-            margin-top: 20px;
-            margin-bottom: 30px;
-            text-align: left;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
-        .form-section h5 {
-            color: #007bff;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .principal-section {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ccc;
-        }
-        .principal-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .principal-img:hover {
-            transform: scale(1.05);
-        }
-        #news-notices-section {
-            text-align: left;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ccc;
-        }
-        #news-notices-section h2 {
-            margin-bottom: 15px;
-            color: #007bff;
-        }
-        .news-item {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-        }
-        .about-us-section {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ccc;
-        }
-        .about-us-icon {
-            font-size: 3em; /* Larger icon */
-            margin-bottom: 15px;
-            cursor: pointer;
-            color: #28a745;
-        }
-        #about-us-info {
-            text-align: left;
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fefefe;
-        }
-        .teacher-section {
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ccc;
-        }
-        .teacher-section h2 {
-            color: #007bff;
-            margin-bottom: 25px; /* More space below heading */
-            text-align: center;
-        }
-        .teacher-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Larger min-width for cards */
-            gap: 25px; /* Increased gap */
-            margin-top: 20px;
-        }
-        .teacher-card {
-            text-align: center;
-            border: 1px solid #eee;
-            padding: 20px; /* Increased padding */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* More prominent shadow */
-            transition: transform 0.3s ease;
-            background-color: #fff;
-        }
-        .teacher-card:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-        }
-        .teacher-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 15px; /* More space below image */
-            border: none;
-            cursor: pointer;
-        }
-        .teacher-info p {
-            margin-bottom: 5px;
-            font-size: 0.95em;
-        }
-        .teacher-name {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-        }
-        .btn-toggle {
-            margin: 20px auto;
-            display: block;
-        }
-        footer {
-            font-size: 0.9em;
-            color: #555;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-            margin-top: 30px;
-            background-color: #f8f9fa; /* Light background for footer */
-        }
-        #backToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            z-index: 99;
-            border: none;
-            outline: none;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            padding: 15px;
-            border-radius: 50%; /* Make it round */
-            font-size: 1.2em; /* Larger icon */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: background-color 0.3s ease;
-        }
-        #backToTopBtn:hover {
-            background-color: #0056b3;
-        }
-        .scroll-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px; /* Increased gap */
-            padding: 15px;
-            white-space: nowrap;
-            scroll-behavior: smooth;
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        .scroll-container img {
-            height: 220px; /* Slightly larger images */
-            border-radius: 8px;
-            flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .scroll-container img:hover {
-            transform: scale(1.02);
-        }
-        /* Optional: Hide scroll bar in Webkit browsers */
-        .scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-        .blockquote {
-            padding: 15px;
-            background-color: #e9ecef;
-            border-left: 5px solid #007bff;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        .blockquote-footer {
-            color: #6c757d;
-            font-size: 0.8em;
-        }
-        .table {
-            width: 100%;
-            margin-bottom: 1rem;
-            color: #212529;
-            border-collapse: collapse;
-        }
-        .table th,
-        .table td {
-            padding: 0.75rem;
-            vertical-align: top;
-            border-top: 1px solid #dee2e6;
-            text-align: center;
-        }
-        .table thead th {
-            vertical-align: bottom;
-            border-bottom: 2px solid #dee2e6;
-            background-color: #f2f2f2;
-        }
-        .table-bordered th,
-        .table-bordered td {
-            border: 1px solid #dee2e6;
-        }
-        .table-bordered thead th,
-        .table-bordered thead td {
-            border-bottom-width: 2px;
-        }
-        .text-muted {
-            color: #6c757d !important;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-        /* New Styles for Check Result Section */
-        #check-result-section {
-            background-color: #f0f8ff; /* Light blue background */
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        #check-result-section h2 {
-            color: #007bff;
-            margin-bottom: 25px;
-        }
-        #result-display {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .result-pass {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .result-fail {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .result-info {
-            background-color: #e2e3e5;
-            color: #383d41;
-            border: 1px solid #d6d8db;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Suryodaya School - Admission & Result Forms</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts for modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #f1f6fa;
+      font-family: 'Open Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 32px 24px;
+      max-width: 500px;
+      margin: 40px auto 0 auto;
+      transition: box-shadow 0.2s;
+    }
+    .form-card:hover {
+      box-shadow: 0 8px 32px rgba(22,135,167,0.11);
+    }
+    .form-card h2 {
+      font-family: 'Roboto', Arial, sans-serif;
+      font-size: 2rem;
+      color: #276678;
+      margin-bottom: 16px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .form-card label {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 600;
+      color: #276678;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      border: 1.5px solid #e6e6e6;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.2s, background 0.2s;
+      background: #f9f9f9;
+      font-family: inherit;
+    }
+    .form-card input:focus,
+    .form-card select:focus,
+    .form-card textarea:focus {
+      border-color: #1687a7;
+      background: #fff;
+      outline: none;
+    }
+    .form-card button,
+    .form-card input[type="submit"] {
+      background: linear-gradient(90deg, #276678, #1687a7);
+      color: #fff;
+      border: none;
+      padding: 12px 0;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s, box-shadow 0.2s;
+      width: 100%;
+      margin-top: 12px;
+      box-shadow: 0 2px 8px rgba(22,135,167,0.07);
+    }
+    .form-card button:hover,
+    .form-card input[type="submit"]:hover {
+      background: linear-gradient(90deg, #1687a7, #276678);
+      box-shadow: 0 4px 16px rgba(22,135,167,0.14);
+    }
+    .form-card .form-group {
+      margin-bottom: 18px;
+    }
+    .was-validated input:invalid,
+    .was-validated select:invalid,
+    .was-validated textarea:invalid {
+      border-color: #e74c3c;
+    }
+    .was-validated input:valid,
+    .was-validated select:valid,
+    .was-validated textarea:valid {
+      border-color: #2ecc71;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .form-card {
+        padding: 18px 6px;
+        max-width: 98vw;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-        <a class="navbar-brand" href="#home">Shree Suryodaya Public Secondary School</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about-us-section">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#teacher-section">Teachers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#news-notices-section">News & Notices</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#check-result-section">Check Result</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="container-page" id="home">
-        <div class="hero">
-            <h1>Shree Suryodaya Public Secondary School</h1>
-            <p class="lead">Empowering Minds for a Brighter Future</p>
-            <p>Bansaha, Kanchanpur | Estd. 2054 B.S. | 📞 9809472838/9812703329 | ✉️ sspssbk@gmail.com</p>
-            <h3>Admission Open for Academic Year 2082!</h3>
-            <button class="btn btn-success mt-3" onclick="document.getElementById('admission-page').style.display='block'; document.getElementById('admission-page').scrollIntoView({ behavior: 'smooth' });">📄 Fill Admission Form</button>
-        </div>
+  <!-- Admission Form -->
+  <div class="form-card">
+    <h2>Admission Form</h2>
+    <form id="admissionForm" novalidate>
+      <div class="form-group">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" name="studentName" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="grade">Grade Applying For</label>
+        <select id="grade" name="grade" required>
+          <option value="">Select Grade</option>
+          <option value="nursery">Nursery</option>
+          <option value="LKG">LKG</option>
+          <option value="UKG">UKG</option>
+          <option value="1">1</option>
+          <!-- Add more grades as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="parentName">Parent/Guardian Name</label>
+        <input type="text" id="parentName" name="parentName" required>
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact Number</label>
+        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="2" required></textarea>
+      </div>
+      <!-- Add more form fields as required -->
+      <button type="submit" id="admissionSubmit">Submit</button>
+      <button type="button" id="downloadBtn" disabled style="margin-top:10px;">Download PDF</button>
+    </form>
+  </div>
 
-        <div class="founder-section">
-            <div class="founder-img-container">
-                <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/VLRfxwSM/484032845-1736717423573833-7908691546125516330-n.jpg' alt='Founder: Mr. Bhan Bahadur Hamal' class="founder-img"/></a>
-                <p class="mt-2 font-weight-bold">Founder: Mr. Bhan Bahadur Hamal</p>
-            </div>
-            <div class="founder-img-container">
-                <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/GmRx7kWz/463238018-995093319324993-1438051675197424265-n.jpg' alt='Founder: Mr. Himalaya Chand' class="founder-img"/></a>
-                <p class="mt-2 font-weight-bold">Founder: Mr. Himalaya Chand</p>
-            </div>
-        </div>
+  <!-- Result Form -->
+  <div class="form-card">
+    <h2>Result Form</h2>
+    <form id="resultForm" novalidate>
+      <div class="form-group">
+        <label for="rollNumber">Roll Number</label>
+        <input type="text" id="rollNumber" name="rollNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="dobResult">Date of Birth</label>
+        <input type="date" id="dobResult" name="dobResult" required>
+      </div>
+      <!-- Add more fields as required -->
+      <button type="submit" id="resultSubmit">Check Result</button>
+    </form>
+  </div>
 
-        <div class="info-section">
-            <h4>Welcome to Shree Suryodaya Public Secondary School</h4>
-            <p>
-                Established in 2054 B.S., Shree Suryodaya Public Secondary School is committed to providing quality education
-                in the far western region of Nepal. Located in Bansaha, Kanchanpur, the school offers a nurturing environment
-                for students to grow academically and socially.
-            </p>
-            <p>
-                With modern facilities, experienced faculty, and a strong focus on extracurricular activities, the school
-                has consistently ranked among the top institutions in the district. We take pride in our legacy and welcome
-                new students and parents to become part of the Suryodaya family.
-            </p>
-        </div>
-
-        <div class="info-section">
-            <h2>Academic Excellence</h2>
-            <p>
-                At Shree Suryodaya, we follow a comprehensive curriculum designed to foster critical thinking and academic growth. Our dedicated teachers employ innovative teaching methodologies to make learning engaging and effective.
-            </p>
-            <h3>Curriculum Highlights</h3>
-            <ul>
-                <li>Well-structured syllabus aligned with national standards.</li>
-                <li>Focus on practical learning and application of knowledge.</li>
-                <li>Regular assessments to track student progress.</li>
-            </ul>
-            <h3>Extracurricular Activities</h3>
-            <p>
-                We believe in the holistic development of our students. A wide range of extracurricular activities are offered to nurture their talents and interests.
-            </p>
-            <ul>
-                <li>Sports: Cricket, Volleyball, Badminton, Athletics</li>
-                <li>Clubs: Eco- Club, Arts Club, Sports Club, JRC Club,It Club</li>
-                <li>Cultural Events: Annual Day, Festivals, Competitions, sports week</li>
-            </ul>
-            <h3>Our Facilities</h3>
-            <p>
-                We provide a conducive learning environment with modern infrastructure and essential facilities.
-            </p>
-            <ul>
-                <li>Spacious and well-ventilated classrooms</li>
-                <li>Well-equipped  computer laboratories</li>
-                <li>A library with a wide collection of books</li>
-                <li>Large playground for sports and recreational activities</li>
-                <li>Own well facilited school buses</li>
-            </ul>
-        </div>
-
-        <div class="info-section">
-            <h2>What Our Students Say</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <blockquote class="blockquote">
-                        <p class="mb-0">"The teachers here are very supportive and encouraging. I've learned so much and also enjoyed the extracurricular activities."</p>
-                        <footer class="blockquote-footer">Subash Bist, Grade 10</footer>
-                    </blockquote>
-                </div>
-                <div class="col-md-6">
-                    <blockquote class="blockquote">
-                        <p class="mb-0">"I love the friendly environment at Shree Suryodaya. There are so many opportunities to explore your interests."</p>
-                        <footer class="blockquote-footer">Araya Bohara, Grade 9</footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-
-        <div id="admission-page">
-            <h4 class="text-center mb-4">Student Admission Form</h4>
-            <form id="admissionForm" novalidate>
-                <div class="form-section">
-                    <h5>Personal Information</h5>
-                    <div class="form-group">
-                        <label for="studentName">Full Name *</label>
-                        <input type="text" class="form-control" id="studentName" name="studentName" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="dob">Date of Birth (B.S.) *</label>
-                        <input type="text" class="form-control" id="dob" name="dob" required placeholder="YYYY-MM-DD" />
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Gender *</label>
-                        <select class="form-control" id="gender" name="gender" required>
-                            <option value="">Choose...</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Student Email *</label>
-                        <input type="email" class="form-control" id="email" name="email" required />
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h5>Parent Information</h5>
-                    <div class="form-group">
-                        <label for="fatherName">Father's Name *</label>
-                        <input type="text" class="form-control" id="fatherName" name="fatherName" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="motherName">Mother's Name *</label>
-                        <input type="text" class="form-control" id="motherName" name="motherName" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="contact">Phone Number *</label>
-                        <input type="tel" class="form-control" id="contact" name="contact" required pattern="[0-9]{10}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Residential Address *</label>
-                        <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h5>Academic Details</h5>
-                    <div class="form-group">
-                        <label for="grade">Grade Applying For *</label>
-                        <select class="form-control" id="grade" name="grade" required>
-                            <option value="">Choose...</option>
-                            <option value="Nursery">Nursery</option>
-                            <option value="LKG">LKG</option>
-                            <option value="UKG">UKG</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastSchool">Last School Attended</label>
-                        <input type="text" class="form-control" id="lastSchool" name="lastSchool" />
-                    </div>
-                    <div class="form-group">
-                        <label for="gpa">GPA from Last Year</label>
-                        <input type="number" step="0.01" min="0" max="4" class="form-control" id="gpa" name="gpa" />
-                    </div>
-                    <div class="form-group">
-                        <label for="optionalSubject">Optional Subject (Grade 9)</label>
-                        <select class="form-control" id="optionalSubject" name="optionalSubject" disabled>
-                            <option value="">Choose...</option>
-                            <option value="Math">Math</option>
-                            <option value="Economics">Economics</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="faculty">Faculty (Grade 11)</label>
-                        <select class="form-control" id="faculty" name="faculty" disabled>
-                            <option value="">Choose...</option>
-                            <option value="Management">Management</option>
-                            <option value="Education">Education</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="facultyOption">Optional Subject (Faculty)</label>
-                        <select class="form-control" id="facultyOption" name="facultyOption" disabled>
-                            <option value="">Choose...</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-                    <button type="button" class="btn btn-success ml-2" id="downloadBtn" disabled>Download PDF</button>
-                </div>
-            </form>
-        </div>
-
-        <hr>
-
-        <div class="principal-section">
-            <h2>Principal's Message</h2>
-            <div class="text-center">
-                <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/xd4s4XyC/482192223-1718632728867716-8982601881967488414-n.jpg' alt='Principal of Shree Suryodaya Public Secondary School' class="principal-img"/></a>
-                <p class="mt-2 font-weight-bold">Mr. Nar Bahadur Hamal, Principal</p>
-            </div>
-            <p>
-                I am delighted to welcome you to our school. As the Principal of Shree Suryodaya Public Secondary School,
-                my main goal is to provide the highest quality education to our students while also nurturing their individual
-                talents. Our school fosters an environment of respect, hard work, and academic excellence.
-            </p>
-        </div>
-
-        <hr>
-
-        <div class="teacher-section" id="teacher-section">
-            <h2>Meet Our Teachers</h2>
-            <div class="teacher-grid">
-                <div class="teacher-card">
-                    <img src="teacher1.jpg" alt="Mr. Krishan Dhami" class="teacher-img"/>
-                    <div class="teacher-info">
-                        <p class="teacher-name">Mr. Krishan Dhami</p>
-                        <p class="teacher-subject">Social Studies</p>
-                        <p class="teacher-qualification">M.Ed</p>
-                        <p class="teacher-experience">12 years experience</p>
-                        <p class="teacher-message">"Believes in engaging and relevant social studies education."</p>
-                    </div>
-                </div>
-
-                <div class="teacher-card">
-                    <a href='https://postimg.cc/FfzYzL67' target='_blank'><img src='https://i.postimg.cc/pdYz0QYY/7a3e7476-c836-4873-9b84-816cdcc3f3c7.jpg' alt='7a3e7476-c836-4873-9b84-816cdcc3f3c7' class="teacher-img"/></a>
-                    <div class="teacher-info">
-                        <p class="teacher-name">Ms. Umesh Prasad Bhatta</p>
-                        <p class="teacher-subject">Account</p>
-                        <p class="teacher-qualification">MBS</p>
-                        <p class="teacher-experience">4 years experience</p>
-                        <p class="teacher-message">"Dedicated to building a strong foundation in accounting."</p>
-                    </div>
-                </div>
-
-                <div class="teacher-card">
-                    <img src="teacher3.jpg" alt="Umesh Bhatta" class="teacher-img"/>
-                    <div class="teacher-info">
-                        <p class="teacher-name">Umesh Bhatta</p>
-                        <p class="teacher-subject">Economics</p>
-                        <p class="teacher-qualification">BBS</p>
-                        <p class="teacher-experience">7 years experience</p>
-                        <p class="teacher-message">"Aims to make economics practical and understandable."</p>
-                    </div>
-                </div>
-
-                <div class="teacher-card">
-                    <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/t4MtwxQw/Whats-App-Image-2025-04-14-at-20-26-55.jpg' alt='Tej Raj Joshi' class="teacher-img"/></a>
-                    <div class="teacher-info">
-                        <p class="teacher-name">Tej Raj Joshi</p>
-                        <p class="teacher-subject">Computer Science</p>
-                        <p class="teacher-qualification">BBS, OCA</p>
-                        <p class="teacher-experience">2 years experience</p>
-                        <p class="teacher-message">"Passionate about empowering students with digital skills."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-
-        <div id="news-notices-section">
-            <h2>News & Notices</h2>
-            <div class="news-item">
-                <h5>Admission Open for 2082</h5>
-                <p>Admissions for the academic year 2082 are now open. Fill out the admission form to secure your child's seat.</p>
-            </div>
-            <div class="news-item">
-                <h5>School Holiday Announcement</h5>
-                <p>The school will remain closed for the Nepali New Year 0n 1st Baishak, 2082.</p>
-            </div>
-            <div class="news-item">
-                <h5>Annual exam Result of the grade 11  2082 published </h5>
-                <p>Annual Examination  Result of the grade 11 published student can check the result using the in the symbol number in the check result section</p>
-            </div>
-        </div>
-
-        <hr>
-
-        <div id="check-result-section">
-            <h2>Check Your Result Insert you symbol Number </h2>
-            <form id="resultCheckForm" class="form-inline justify-content-center">
-                <div class="form-group mb-2 mr-sm-2">
-                    <label for="symbolNumber" class="sr-only">Symbol Number</label>
-                    <input type="text" class="form-control" id="symbolNumber" placeholder="Enter Symbol Number" required>
-                </div>
-                <button type="submit" class="btn btn-primary mb-2">Check Result</button>
-            </form>
-            <div id="result-display" class="mt-3">
-                </div>
-        </div>
-
-        <hr>
-
-        <div class="about-us-section" id="about-us-section">
-            <h2>About Us</h2>
-            <div class="text-center">
-                <i class="fas fa-school about-us-icon"></i>
-            </div>
-            <p>Shree Suryodaya Public Secondary School is committed to providing quality education in a safe and nurturing
-                environment. Our goal is to foster academic excellence, personal growth, and a strong sense of community.
-                We offer a comprehensive curriculum that prepares students for the challenges of the modern world, while also
-                emphasizing values such as respect, discipline, and teamwork.
-            </p>
-            <button class="btn btn-info btn-toggle" onclick="toggleAboutUsInfo()" id="aboutUsToggleButton">Read More</button>
-            <div id="about-us-info" style="display:none;">
-                <p>Our school has been established with the vision to impart quality education with values. We have achieved
-                    remarkable milestones, with thousands of alumni making their mark in various sectors. Our state-of-the-art
-                    infrastructure and a team of dedicated teachers make us a leading educational institution in the region.
-                </p>
-                <p>We continuously strive to innovate our teaching methods and integrate technology to provide a dynamic learning experience. Our strong community ties and parental involvement are key to our students' success.</p>
-            </div>
-        </div>
-
-        <h2>Photo Gallery</h2>
-        <div class="scroll-container">
-            <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/YCYqPmFC/d211e08a-7f19-4c79-8019-845cf4d0f911.jpg' alt='Students in classroom' /></a>
-            <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/j5tykbkL/46e3875f-0761-4b4a-b853-149b4e460ac8.jpg' alt='Annual sports day' /></a>
-            <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/ncVWtBgh/490866974-2081751235582716-6436497038297407581-n.jpg' alt='Science fair project' /></a>
-            <a href='https://i.postimg.cc/RCGBfSzq/482083888-2047317879026052-2803405041408944737-n.jpg' alt='School assembly' /></a>
-            <img src="https://via.placeholder.com/300x200?text=Library+Scene" alt="Students in library">
-            <img src="https://via.placeholder.com/300x200?text=Computer+Lab" alt="Students in computer lab">
-            <img src="https://via.placeholder.com/300x200?text=Playground+Fun" alt="Children playing on playground">
-        </div>
-    </div>
-
-    <footer class="bg-light py-3 text-center">
-        <p>&copy; 2025 Shree Suryodaya Public Secondary School | Bansaha, Kanchanpur</p>
-        <p>Developed by Tej Raj Joshi | <a href="mailto:sspssbk@gmail.com">sspssbk@gmail.com</a> | 📞 9815623884</p>
-    </footer>
-
-    <button onclick="topFunction()" id="backToTopBtn" title="Go to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
+  <!-- Optionally, add your JavaScript below for validation, sweetalert, or pdf download functionality. -->
+  <!-- Example: 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        // Get the button
-        let mybutton = document.getElementById("backToTopBtn");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-
-        function toggleAboutUsInfo() {
-            var info = document.getElementById("about-us-info");
-            var button = document.getElementById("aboutUsToggleButton");
-            if (info.style.display === "none") {
-                info.style.display = "block";
-                button.textContent = "Read Less"; // Change button text
-            } else {
-                info.style.display = "none";
-                button.textContent = "Read More"; // Change button text back
-            }
-        }
-
-        $(function() {
-            $('#dob').nepaliDatePicker({
-                language: 'en',
-                ndpYear: true,
-                ndpMonth: true,
-                ndpDay: true,
-                onChange: function() {
-                    var nepaliDate = $('#dob').val();
-                   
-                    var parts = nepaliDate.split('-');
-                    if (parts.length === 3) {
-                       
-                        let year = parseInt(parts[0]);
-                        let month = parseInt(parts[1]);
-                        let day = parseInt(parts[2]);
-
-        
-                        let adYear = year - 57; // Very rough estimate
-                        let adMonth = month;
-                        let adDay = day;
-
-                        
-                    }
-                }
-            });
-        });
-
-        // --- Admission Form Script URL (REPLACE THIS WITH YOUR ACTUAL DEPLOYED URL) ---
-        const admissionScriptUrl = "https://script.google.com/macros/s/AKfycbyLRsKGXYjwhRviYpa33MLX0nJzK881p-7bKQFfi22BPGVT6dPrIjLymEmlM_nlxSuA/exec"; // Replace with your Google Apps Script URL for ADMISSION FORM
-        // -----------------------------------------------------------------------------
-
-        const grade = document.getElementById("grade");
-        const lastSchool = document.getElementById("lastSchool");
-        const gpa = document.getElementById("gpa");
-        const optionalSubject = document.getElementById("optionalSubject");
-        const faculty = document.getElementById("faculty");
-        const facultyOption = document.getElementById("facultyOption");
-
-        const submitBtn = document.getElementById("submitBtn");
-        const downloadBtn = document.getElementById("downloadBtn");
-
-        let downloadUrl = "";
-
-        function toggleFields() {
-            const val = grade.value;
-            const numVal = parseInt(val);
-            const isNum = !isNaN(numVal);
-
-            // Display/hide lastSchool and GPA based on grade > 2
-            // For Nursery/LKG/UKG, hide these as well
-            if (val === "Nursery" || val === "LKG" || val === "UKG" || (isNum && numVal <= 2)) {
-                lastSchool.closest(".form-group").style.display = "none";
-                gpa.closest(".form-group").style.display = "none";
-                lastSchool.required = false;
-                gpa.required = false;
-            } else {
-                lastSchool.closest(".form-group").style.display = "block";
-                gpa.closest(".form-group").style.display = "block";
-                lastSchool.required = true;
-                gpa.required = true;
-            }
-
-
-            // Enable/disable Optional Subject for Grade 9
-            optionalSubject.disabled = val !== "9";
-            optionalSubject.required = val === "9";
-            optionalSubject.closest(".form-group").style.display = val === "9" ? "block" : "none";
-
-            // Enable/disable Faculty for Grade 11
-            faculty.disabled = val !== "11";
-            faculty.required = val === "11";
-            faculty.closest(".form-group").style.display = val === "11" ? "block" : "none";
-
-            // Reset and disable facultyOption if not Grade 11
-            if (val !== "11") {
-                facultyOption.innerHTML = '<option value="">Choose...</option>';
-                facultyOption.disabled = true;
-                facultyOption.required = false;
-                facultyOption.closest(".form-group").style.display = "none";
-            } else {
-                facultyOption.closest(".form-group").style.display = "block";
-            }
-        }
-
-        grade.addEventListener("change", toggleFields);
-        toggleFields(); // Call on page load to set initial state
-
-        faculty.addEventListener("change", function () {
-            const val = this.value;
-            facultyOption.innerHTML = '<option value="">Choose...</option>';
-            facultyOption.disabled = false;
-            facultyOption.required = true;
-
-            if (val === "Management") {
-                facultyOption.innerHTML += '<option value="Computer">Computer</option>';
-                facultyOption.innerHTML += '<option value="Business Math">Business Math</option>';
-            } else if (val === "Education") {
-                facultyOption.innerHTML += '<option value="Optional Nepali">Optional Nepali</option>';
-                facultyOption.innerHTML += '<option value="Optional English">Optional English</option>';
-            } else {
-                facultyOption.disabled = true;
-                facultyOption.required = false;
-            }
-        });
-
-        document.getElementById("admissionForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            // Client-side form validation
-            const form = e.target;
-            if (!form.checkValidity()) {
-                swal("Validation Error!", "Please fill out all required fields correctly.", "error");
-                form.classList.add('was-validated'); // Add Bootstrap's validation styles
-                return;
-            }
-
-            swal({
-                title: "Confirm Submission",
-                text: "Are you sure all information is correct before submitting?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willSubmit) => {
-                if (willSubmit) {
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = "Submitting...";
-
-                    const formData = new FormData(form);
-                    const data = {};
-                    formData.forEach((value, key) => {
-                        data[key] = value;
-                    });
-
-                    fetch(admissionScriptUrl, { // Use the admission-specific script URL
-                        method: "POST",
-                        mode: "cors",
-                        cache: "no-cache",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams(data).toString(),
-                    })
-                    .then(response => response.json())
-                    .then(result => {
-                        if (result.status === "success") {
-                            swal("Success!", "Admission form submitted successfully. You can download the PDF.", "success");
-                            downloadUrl = result.downloadLink; // Assuming your Google Script returns a download link
-                            downloadBtn.disabled = false;
-                            submitBtn.textContent = "Submitted";
-                            submitBtn.disabled = true; // Keep disabled after success
-                        } else {
-                            swal("Error!", result.message || "Something went wrong.", "error");
-                            submitBtn.disabled = false;
-                            submitBtn.textContent = "Submit";
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                        swal("Error!", "An error occurred during submission. Please try again.", "error");
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = "Submit";
-                    });
-                }
-            });
-        });
-
-        // Placeholder for PDF download function (client-side generation example)
-        document.getElementById("downloadBtn").addEventListener("click", function() {
-            if (downloadUrl) {
-                // If the server provides a direct download link
-                window.open(downloadUrl, '_blank');
-            } else {
-                // Client-side PDF generation if no server link is available
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-
-                doc.setFont("Times New Roman", "normal");
-                doc.setFontSize(18);
-                doc.text("Shree Suryodaya Public Secondary School", 105, 20, null, null, "center");
-                doc.setFontSize(12);
-                doc.text("Admission Form Details", 105, 30, null, null, "center");
-                doc.line(20, 35, 190, 35); // Horizontal line
-
-                let yPos = 45;
-                const formElements = document.getElementById("admissionForm").elements;
-                Array.from(formElements).forEach(element => {
-                    if (element.tagName === 'INPUT' || element.tagName === 'SELECT' || element.tagName === 'TEXTAREA') {
-                        if (element.type !== 'submit' && element.type !== 'button' && element.name) {
-                            doc.text(`${element.previousElementSibling ? element.previousElementSibling.textContent : element.name}: ${element.value}`, 20, yPos);
-                            yPos += 7;
-                            if (yPos > 280) { // Check for page overflow
-                                doc.addPage();
-                                yPos = 20;
-                            }
-                        }
-                    }
-                });
-
-                doc.save("Admission_Form_Shree_Suryodaya.pdf");
-                swal("Download Complete!", "Your admission form has been downloaded.", "success");
-            }
-        });
-
-        // --- Result Check Section Logic ---
-        // --- REPLACE THIS WITH YOUR ACTUAL DEPLOYED GOOGLE APPS SCRIPT URL FOR RESULTS ---
-        const resultScriptUrl = "https://script.google.com/macros/s/AKfycbz3PM2cdN2ZGekoWtiDZekAVrExi04RqqzhpygPA8C9uZaLKCheU0650p9VL0hZ-cUt5A/exec"; // Replace with your actual deployed Apps Script URL
-        // ---------------------------------------------------------------------------------
-
-        document.getElementById("resultCheckForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const symbolNumberInput = document.getElementById("symbolNumber").value.trim();
-            const resultDisplay = document.getElementById("result-display");
-
-            resultDisplay.className = ""; // Clear previous classes
-            resultDisplay.textContent = ""; // Clear previous text
-
-            if (!symbolNumberInput) {
-                resultDisplay.classList.add("result-info");
-                resultDisplay.textContent = "Please enter your Symbol Number.";
-                return;
-            }
-
-            // Show a loading indicator
-            resultDisplay.classList.add("result-info");
-            resultDisplay.textContent = "Checking result...";
-
-            // Construct the URL with only symbol number as query parameter
-            const url = `${resultScriptUrl}?symbolNumber=${encodeURIComponent(symbolNumberInput)}`;
-
-            fetch(url, {
-                method: "GET",
-                mode: "cors", // Ensure CORS is handled
-                cache: "no-cache"
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.status === "success") {
-                    const resultText = String(data.result).trim().toLowerCase(); // Ensure result is string and lowercase for comparison
-                    if (resultText === "pass") {
-                        resultDisplay.classList.add("result-pass");
-                        resultDisplay.textContent = `Congratulations! You have Passed the exam! (Symbol: ${symbolNumberInput})`;
-                    } else if (resultText === "fail") {
-                        resultDisplay.classList.add("result-fail");
-                        resultDisplay.textContent = `Unfortunately, you have Failed. (Symbol: ${symbolNumberInput})`;
-                    } else {
-                        // Handle unexpected result values
-                        resultDisplay.classList.add("result-info");
-                        resultDisplay.textContent = `Result: ${data.result}. Please contact the school for clarification.`;
-                    }
-                } else if (data.status === "not_found") {
-                    resultDisplay.classList.add("result-fail");
-                    resultDisplay.textContent = "Result not found for the provided Symbol Number. Please check your input.";
-                } else {
-                    // General error from script
-                    resultDisplay.classList.add("result-info");
-                    resultDisplay.textContent = data.message || "An error occurred while fetching the result. Please try again later.";
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching result:", error);
-                resultDisplay.classList.add("result-fail");
-                resultDisplay.textContent = "Could not connect to the result service. Please try again later.";
-            });
-        });
+      // Your JS validation and PDF code here
     </script>
+  -->
 </body>
 </html>
