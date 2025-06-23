@@ -431,9 +431,9 @@
                 We believe in the holistic development of our students. A wide range of extracurricular activities are offered to nurture their talents and interests.
             </p>
             <ul>
-                <li>Sports: Football, Volleyball, Basketball, Athletics</li>
-                <li>Clubs: Science Club, Arts Club, Music Club, Debate Club</li>
-                <li>Cultural Events: Annual Day, Festivals, Competitions</li>
+                <li>Sports: Cricket, Volleyball, Badminton, Athletics</li>
+                <li>Clubs: Eco- Club, Arts Club, Sports Club, JRC Club,It Club</li>
+                <li>Cultural Events: Annual Day, Festivals, Competitions, sports week</li>
             </ul>
             <h3>Our Facilities</h3>
             <p>
@@ -441,9 +441,10 @@
             </p>
             <ul>
                 <li>Spacious and well-ventilated classrooms</li>
-                <li>Well-equipped science and computer laboratories</li>
-                <li>A ibrary with a wide collection of books</li>
+                <li>Well-equipped  computer laboratories</li>
+                <li>A library with a wide collection of books</li>
                 <li>Large playground for sports and recreational activities</li>
+                <li>Own well facilited school buses</li>
             </ul>
         </div>
 
@@ -757,26 +758,20 @@
                 ndpDay: true,
                 onChange: function() {
                     var nepaliDate = $('#dob').val();
-                    // Basic conversion (for demonstration).  Use a proper library for accurate conversion.
+                   
                     var parts = nepaliDate.split('-');
                     if (parts.length === 3) {
-                        // This is an approximate conversion and might not be perfectly accurate.
-                        // For precise conversion, use a dedicated Nepali-to-AD date conversion library.
+                       
                         let year = parseInt(parts[0]);
                         let month = parseInt(parts[1]);
                         let day = parseInt(parts[2]);
 
-                        // Simple approximation for demonstration purposes:
-                        // Assuming Nepali year 2082 starts around April 2025
-                        // This would need a proper lookup table or algorithm for accuracy
-                        // This part is illustrative and not a precise date conversion.
+        
                         let adYear = year - 57; // Very rough estimate
                         let adMonth = month;
                         let adDay = day;
 
-                        // Example to just show how a different input would work
-                        // var adDate = adYear + '-' + (adMonth < 10 ? '0' + adMonth : adMonth) + '-' + (adDay < 10 ? '0' + adDay : adDay);
-                        // console.log("Approx AD Date:", adDate);
+                        
                     }
                 }
             });
