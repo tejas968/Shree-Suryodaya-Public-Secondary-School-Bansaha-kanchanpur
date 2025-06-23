@@ -1,0 +1,11 @@
+/* Paste all your CSS here (from your original <style> block) */
+body {
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    background: url('https://images.pexels.com/photos/1148399/pexels-photo-1148399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+/* ... rest of your CSS ... */
+/* (Copy all the CSS you had in your <style> block!) */
