@@ -197,14 +197,15 @@
             transform: translateY(-5px); /* Lift effect on hover */
         }
         .teacher-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 15px; /* More space below image */
-            border: none;
-            cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
         }
         .teacher-info p {
             margin-bottom: 5px;
@@ -382,21 +383,32 @@
     </nav>
 
     <div class="container-page" id="home">
-        <div class="hero">
-            <h1>Shree Suryodaya Public Secondary School</h1>
-            <p class="lead">Empowering Minds for a Brighter Future</p>
-            <p>Bansaha, Kanchanpur | Estd. 2054 B.S. | 📞 9809472838/9812703329 | ✉️ sspssbk@gmail.com</p>
-            <h3>Admission Open for Academic Year 2082!</h3>
-            <button class="btn btn-success mt-3" onclick="document.getElementById('admission-page').style.display='block'; document.getElementById('admission-page').scrollIntoView({ behavior: 'smooth' });">📄 Fill Admission Form</button>
-        </div>
+  <div class="hero" style="display: flex; align-items: center; gap: 15px;">
+    <a ><img src="https://iili.io/FYP9vPn.th.png" alt="FYP9vPn.th.png" style="height:200px; border-radius:150%;">
+ </a>
+
+    <div>
+      <h1>Shree Suryodaya Public Secondary School</h1>
+      <p class="lead">Empowering Minds for a Brighter Future</p>
+      <p>Bansaha, Kanchanpur | Estd. 2054 B.S. | 📞 9809472838 / 9812703329 | ✉️ sspssbk@gmail.com</p>
+      <h3>Admission Open for +2 Academic Year 2082!</h3>
+      <button class="btn btn-success mt-3" onclick="
+        document.getElementById('admission-page').style.display='block';
+        document.getElementById('admission-page').scrollIntoView({ behavior: 'smooth' });
+      ">
+        📄 Fill Admission Form
+      </button>
+    </div>
+  </div>
+</div>
 
         <div class="founder-section">
             <div class="founder-img-container">
-                <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/VLRfxwSM/484032845-1736717423573833-7908691546125516330-n.jpg' alt='Founder: Mr. Bhan Bahadur Hamal' class="founder-img"/></a>
+               <img src='https://i.postimg.cc/VLRfxwSM/484032845-1736717423573833-7908691546125516330-n.jpg' alt='Founder: Mr. Bhan Bahadur Hamal' class="founder-img"/></a>
                 <p class="mt-2 font-weight-bold">Founder: Mr. Bhan Bahadur Hamal</p>
             </div>
             <div class="founder-img-container">
-                <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/GmRx7kWz/463238018-995093319324993-1438051675197424265-n.jpg' alt='Founder: Mr. Himalaya Chand' class="founder-img"/></a>
+               <img src='https://i.postimg.cc/GmRx7kWz/463238018-995093319324993-1438051675197424265-n.jpg' alt='Founder: Mr. Himalaya Chand' class="founder-img"/></a>
                 <p class="mt-2 font-weight-bold">Founder: Mr. Himalaya Chand</p>
             </div>
         </div>
@@ -558,6 +570,7 @@
                             <option value="">Choose...</option>
                             <option value="Management">Management</option>
                             <option value="Education">Education</option>
+                            <option value="Education">Humanities</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -580,7 +593,7 @@
         <div class="principal-section">
             <h2>Principal's Message</h2>
             <div class="text-center">
-                <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/xd4s4XyC/482192223-1718632728867716-8982601881967488414-n.jpg' alt='Principal of Shree Suryodaya Public Secondary School' class="principal-img"/></a>
+               <img src='https://i.postimg.cc/xd4s4XyC/482192223-1718632728867716-8982601881967488414-n.jpg' alt='Principal of Shree Suryodaya Public Secondary School' class="principal-img"/></a>
                 <p class="mt-2 font-weight-bold">Mr. Nar Bahadur Hamal, Principal</p>
             </div>
             <p>
@@ -596,7 +609,7 @@
             <h2>Meet Our Teachers</h2>
             <div class="teacher-grid">
                 <div class="teacher-card">
-                    <img src="teacher1.jpg" alt="Mr. Krishan Dhami" class="teacher-img"/>
+                   <img src='https://i.postimg.cc/fVvZ9HmM/484184738-122148958742443678-7823913765147372478-n-1.jpg' border='0' alt='484184738-122148958742443678-7823913765147372478-n-1'/></a>
                     <div class="teacher-info">
                         <p class="teacher-name">Mr. Krishan Dhami</p>
                         <p class="teacher-subject">Social Studies</p>
@@ -607,7 +620,7 @@
                 </div>
 
                 <div class="teacher-card">
-                    
+                    <img src='https://i.postimg.cc/njqg7r9N/485164003-4001597453495349-7133093004493076956-n-1.jpg' border='0' alt='485164003-4001597453495349-7133093004493076956-n-1'/></a>
                     <div class="teacher-info">
                         <p class="teacher-name">Ms. Umesh Prasad Bhatta</p>
                         <p class="teacher-subject">Account</p>
@@ -617,19 +630,20 @@
                     </div>
                 </div>
 
-                <div class="teacher-card">
-                    <a href='https://postimg.cc/FfzYzL67' target='_blank'><img src='https://i.postimg.cc/pdYz0QYY/7a3e7476-c836-4873-9b84-816cdcc3f3c7.jpg' alt='7a3e7476-c836-4873-9b84-816cdcc3f3c7' class="teacher-img"/></a>
-                    <div class="teacher-info">
-                        <p class="teacher-name">Umesh Bhatta</p>
-                        <p class="teacher-subject">Economics</p>
-                        <p class="teacher-qualification">BBS</p>
-                        <p class="teacher-experience">7 years experience</p>
-                        <p class="teacher-message">"Aims to make economics practical and understandable."</p>
-                    </div>
-                </div>
+<div class="teacher-card">
+  <img src="https://iili.io/FYi1giQ.md.jpg" alt="Umesh Bhatta" style="width:150px; height:auto;" />
+  <div class="teacher-info">
+    <p class="teacher-name">Umesh Bhatta</p>
+    <p class="teacher-subject">Economics</p>
+    <p class="teacher-qualification">BBS</p>
+    <p class="teacher-experience">7 years experience</p>
+    <p class="teacher-message">"Aims to make economics practical and understandable."</p>
+  </div>
+</div>
+
 
                 <div class="teacher-card">
-                    <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/t4MtwxQw/Whats-App-Image-2025-04-14-at-20-26-55.jpg' alt='Tej Raj Joshi' class="teacher-img"/></a>
+                    <img src='https://i.postimg.cc/t4MtwxQw/Whats-App-Image-2025-04-14-at-20-26-55.jpg' alt='Tej Raj Joshi' class="teacher-img"/></a>
                     <div class="teacher-info">
                         <p class="teacher-name">Tej Raj Joshi</p>
                         <p class="teacher-subject">Computer Science</p>
@@ -645,10 +659,21 @@
 
         <div id="news-notices-section">
             <h2>News & Notices</h2>
-            <div class="news-item">
-                <h5>Admission Open for 2082</h5>
-                <p>Admissions for the academic year 2082 are now open. Fill out the admission form to secure your child's seat.</p>
-            </div>
+            <div id="notice" style="font-family: Arial, sans-serif; color:#333;">
+  <h2>Admissions Open for +2! 🎉</h2>
+  <p><strong>Shree Suryodaya Public Secondary School</strong>, Shuklaphanta-01, Bansaha Kanchanpur 🏫</p>
+
+  <p>Enroll now for the upcoming session! Programs: Computer Commerce, Business Commerce, English, Nepali, Health, Commerce & Education.</p>
+
+  <p><strong>Why Choose Us?</strong> Experienced faculty, modern facilities, vibrant student community, sports & extracurricular activities.</p>
+
+  <p><strong>Apply by 2082-03-30</strong>. Entrance exam required. <strong>Special  discount for intrance topper and runner </strong></p>
+
+  <p>Apply online or visit us:</p>
+  <p><a href="https://tejas968.github.io/Shree-Suryodaya-Public-Secondary-School-Bansaha-kanchanpur/" target="_blank" rel="noopener" style="color:#2a7a2a;">Our Website</a></p>
+
+  <p>Contact: <a href="tel:9809472838" style="color:#2a7a2a;">9809472838</a> | <a href="mailto:sspss@gmail.com" style="color:#2a7a2a;">sspss@gmail.com</a></p>
+</div>
             <div class="news-item">
                 <h5>School Holiday Announcement</h5>
                 <p>The school will remain closed for the Nepali New Year 0n 1st Baishak, 2082.</p>
@@ -662,7 +687,8 @@
         <hr>
 
         <div id="check-result-section">
-            <h2>Check Your Result Insert you symbol Number </h2>
+            <h2>Grade 11 Result </br>
+            Check Your Result Insert your symbol Number </h2>
             <form id="resultCheckForm" class="form-inline justify-content-center">
                 <div class="form-group mb-2 mr-sm-2">
                     <label for="symbolNumber" class="sr-only">Symbol Number</label>
@@ -696,18 +722,20 @@
             </div>
         </div>
 
-        <h2>Photo Gallery</h2>
-        <div class="scroll-container">
-            <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/YCYqPmFC/d211e08a-7f19-4c79-8019-845cf4d0f911.jpg' alt='Students in classroom' /></a>
-            <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/j5tykbkL/46e3875f-0761-4b4a-b853-149b4e460ac8.jpg' alt='Annual sports day' /></a>
-            <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/ncVWtBgh/490866974-2081751235582716-6436497038297407581-n.jpg' alt='Science fair project' /></a>
-            <a href='https://i.postimg.cc/RCGBfSzq/482083888-2047317879026052-2803405041408944737-n.jpg' alt='School assembly' /></a>
-            <img src="https://via.placeholder.com/300x200?text=Library+Scene" alt="Students in library">
-            <img src="https://via.placeholder.com/300x200?text=Computer+Lab" alt="Students in computer lab">
-            <img src="https://via.placeholder.com/300x200?text=Playground+Fun" alt="Children playing on playground">
-        </div>
-    </div>
+       <h2>Photo Gallery</h2>
+<div class="scroll-container" style="display:flex; overflow-x:auto; gap:10px; padding-bottom:10px;">
+  <img src="https://i.postimg.cc/YCYqPmFC/d211e08a-7f19-4c79-8019-845cf4d0f911.jpg" alt="Photo 1" style="height:150px; border-radius:8px;">
+  <img src="https://iili.io/FYsH6du.md.jpg" alt="FYsH6du.md.jpg" border="0"></a>
+  <img src="https://iili.io/FYsFXAg.th.jpg" alt="FYsFXAg.th.jpg" border="0"></a>
+<img src='https://i.postimg.cc/fkqXQKrq/476807959-2027117264379447-6385063078524158461-n.jpg' border='0' alt='476807959-2027117264379447-6385063078524158461-n'/></a>
+<img src='https://i.postimg.cc/N5rxNSjk/482300912-2047318199026020-3552848572973679859-n.jpg' border='0' alt='482300912-2047318199026020-3552848572973679859-n'/></a>
+<img src='https://i.postimg.cc/XZCSn431/489757042-2074678209623352-6299427130276784984-n.jpg' border='0' alt='489757042-2074678209623352-6299427130276784984-n'/></a>
+<img src='https://i.postimg.cc/wR3kdTY7/490477148-2082295455528294-2145875037856170232-n-1.jpg' border='0' alt='490477148-2082295455528294-2145875037856170232-n-1'/></a>
+<img src='https://i.postimg.cc/TypmwNH4/IMG-7087.jpg' border='0' alt='IMG-7087'/></a>
 
+  
+  <img src="https://iili.io/FYsqTcN.th.jpg" alt="FYsqTcN.th.jpg" border="0"></a>
+</div>
     <footer class="bg-light py-3 text-center">
         <p>&copy; 2025 Shree Suryodaya Public Secondary School | Bansaha, Kanchanpur</p>
         <p>Developed by Tej Raj Joshi | <a href="mailto:sspssbk@gmail.com">teajussjoshi5@gmail.com</a> | 📞 9815623884</p>
@@ -778,7 +806,7 @@
         });
 
         // --- Admission Form Script URL (REPLACE THIS WITH YOUR ACTUAL DEPLOYED URL) ---
-        const admissionScriptUrl = "https://script.google.com/macros/s/AKfycbyLRsKGXYjwhRviYpa33MLX0nJzK881p-7bKQFfi22BPGVT6dPrIjLymEmlM_nlxSuA/exec"; // Replace with your Google Apps Script URL for ADMISSION FORM
+        const admissionScriptUrl = "https://script.google.com/macros/s/AKfycbwnALX384PbrwsjXmatFH7hqb0bJlKt_iPkheAK3orlNxysUgjVSLACB9eMR4bhMAbRXQ/exec"; // Replace with your Google Apps Script URL for ADMISSION FORM
         // -----------------------------------------------------------------------------
 
         const grade = document.getElementById("grade");
